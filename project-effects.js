@@ -1,17 +1,43 @@
-const cards=[...document.querySelectorAll('[data-site-card]')];
-if(cards.length&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
- const update=()=>{
-  const center=window.innerHeight*.48;
-  cards.forEach((card,i)=>{
-   const r=card.getBoundingClientRect(), y=r.top+r.height/2, d=(y-center)/(window.innerHeight*.58), a=Math.max(0,1-Math.abs(d));
-   const rotate=(i%2?-1:1)*d*8, scale=.82+a*.18, z=a*70;
-   card.style.transform=`translate3d(0,${d*30}px,${z}px) rotateX(${d*5}deg) rotateY(${rotate}deg) scale(${scale})`;
-   card.style.opacity=String(.42+a*.58);
-   card.style.filter=`blur(${Math.max(0,(Math.abs(d)-.78)*2).toFixed(2)}px) saturate(${.7+a*.3})`;
-   card.classList.toggle('is-active',a>.82);
-  });
- };
- let ticking=false;
- const request=()=>{if(!ticking){requestAnimationFrame(()=>{update();ticking=false});ticking=true}};
- window.addEventListener('scroll',request,{passive:true});window.addEventListener('resize',request,{passive:true});update();
+const cards = [...document.querySelectorAll('[data-site-card]')];
+
+if (cards.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let ticking = false;
+
+  const update = () => {
+    const viewportCenter = window.innerHeight * 0.5;
+
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const distance = cardCenter - viewportCenter;
+      const normalized = Math.max(-1, Math.min(1, distance / (window.innerHeight * 0.62)));
+      const focus = 1 - Math.min(1, Math.abs(normalized));
+
+      // Subtle stacked-card depth. The center card stays readable and calm.
+      const scale = 0.94 + focus * 0.06;
+      const rotateX = normalized * -2.8;
+      const rotateY = normalized * 1.8;
+      const translateZ = focus * 34;
+      const lift = normalized * 12;
+
+      card.style.transform = `translate3d(0, ${lift}px, ${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+      card.style.opacity = String(0.72 + focus * 0.28);
+      card.style.filter = `saturate(${0.86 + focus * 0.14})`;
+      card.style.setProperty('--preview-shift', `${normalized * -14}px`);
+      card.classList.toggle('is-active', focus > 0.72);
+    });
+  };
+
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      update();
+      ticking = false;
+    });
+  };
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
+  update();
 }
