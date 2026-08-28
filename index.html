@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -68,16 +69,26 @@
       </div>
     </section>
 
-    <section id="stack" class="section section-divider">
-      <div class="section-heading reveal"><span>02 / Toolkit</span><h2>The stack behind the work.</h2></div>
-      <div class="stack-grid reveal">
-        <div class="stack-card tilt-card" data-tilt data-tilt-max="4"><span>01</span><h3>Frontend</h3><p>HTML · CSS · JavaScript · React</p><i>01</i></div>
-        <div class="stack-card tilt-card" data-tilt data-tilt-max="4"><span>02</span><h3>Backend</h3><p>Node.js · Express · Flask · REST APIs</p><i>02</i></div>
-        <div class="stack-card tilt-card" data-tilt data-tilt-max="4"><span>03</span><h3>Data</h3><p>PostgreSQL · MongoDB · optimization</p><i>03</i></div>
-        <div class="stack-card tilt-card" data-tilt data-tilt-max="4"><span>04</span><h3>Engineering</h3><p>Python · Java · C · DSA · debugging</p><i>04</i></div>
-        <div class="stack-card tilt-card" data-tilt data-tilt-max="4"><span>05</span><h3>Systems</h3><p>Server management · monitoring · multiprocessing · threading</p><i>05</i></div>
-        <div class="stack-card tilt-card" data-tilt data-tilt-max="4"><span>06</span><h3>Applied AI</h3><p>Image processing · ML workflows · automation · IoT</p><i>06</i></div>
+    <section id="stack" class="section section-divider stack-section">
+      <div class="section-heading reveal"><span>02 / Toolkit</span><h2>The stack behind the work.</h2><p>Move across the stack. The center technology takes focus while the surrounding cards gently recede.</p></div>
+      <div class="stack-marquee reveal" data-stack-marquee aria-label="Technology stack">
+        <div class="stack-track">
+          <article class="stack-tech" data-tech="HTML5"><i class="devicon-html5-plain colored"></i><strong>HTML5</strong><span>Frontend</span></article>
+          <article class="stack-tech" data-tech="CSS3"><i class="devicon-css3-plain colored"></i><strong>CSS3</strong><span>Frontend</span></article>
+          <article class="stack-tech" data-tech="JavaScript"><i class="devicon-javascript-plain colored"></i><strong>JavaScript</strong><span>Language</span></article>
+          <article class="stack-tech" data-tech="React"><i class="devicon-react-original colored"></i><strong>React</strong><span>Frontend</span></article>
+          <article class="stack-tech" data-tech="Node.js"><i class="devicon-nodejs-plain colored"></i><strong>Node.js</strong><span>Backend</span></article>
+          <article class="stack-tech" data-tech="Express"><i class="devicon-express-original"></i><strong>Express</strong><span>Backend</span></article>
+          <article class="stack-tech" data-tech="Python"><i class="devicon-python-plain colored"></i><strong>Python</strong><span>AI / Backend</span></article>
+          <article class="stack-tech" data-tech="Java"><i class="devicon-java-plain colored"></i><strong>Java</strong><span>Engineering</span></article>
+          <article class="stack-tech" data-tech="C"><i class="devicon-c-plain colored"></i><strong>C</strong><span>Engineering</span></article>
+          <article class="stack-tech" data-tech="MongoDB"><i class="devicon-mongodb-plain colored"></i><strong>MongoDB</strong><span>Database</span></article>
+          <article class="stack-tech" data-tech="PostgreSQL"><i class="devicon-postgresql-plain colored"></i><strong>PostgreSQL</strong><span>Database</span></article>
+          <article class="stack-tech" data-tech="Git"><i class="devicon-git-plain colored"></i><strong>Git</strong><span>Tools</span></article>
+          <article class="stack-tech" data-tech="GitHub"><i class="devicon-github-original"></i><strong>GitHub</strong><span>Tools</span></article>
+        </div>
       </div>
+      <div class="stack-fade stack-fade-left" aria-hidden="true"></div><div class="stack-fade stack-fade-right" aria-hidden="true"></div>
     </section>
 
     <section id="experience" class="section section-divider">
